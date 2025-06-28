@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Real Calculator UI</title>
+    <style>
+        body {
+            background-color: #f1f1f1;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .calculator {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            color: #fff;
+            width: 300px;
+        }
+
+        .display {
+            background-color: #111;
+            padding: 15px;
+            font-size: 2em;
+            border-radius: 8px;
+            text-align: right;
+            margin-bottom: 15px;
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        input[type="number"] {
+            grid-column: span 2;
+            padding: 10px;
+            font-size: 1em;
+            border: none;
+            border-radius: 8px;
+            text-align: right;
+        }
+
+        select, input[type="submit"] {
+            padding: 10px;
+            font-size: 1em;
+            border: none;
+            border-radius: 8px;
+            background-color: #444;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        select:hover, input[type="submit"]:hover {
+            background-color: #666;
+        }
+
+        .result {
+            margin-top: 15px;
+            text-align: right;
+            font-size: 1.5em;
+            color: #0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="display">Simple Calculator</div>
+        <form method="POST">
+            <input type="number" step="any" name="num1" placeholder="First Number" required>
+            <input type="number" step="any" name="num2" placeholder="Second Number" required>
+            <select name="operation">
+                <option value="add">+</option>
+                <option value="subtract">−</option>
+                <option value="multiply">×</option>
+                <option value="divide">÷</option>
+            </select>
+            <input type="submit" value="=">
+        </form>
+        {% if result != '' %}
+        <div class="result">= {{ result }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
